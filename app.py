@@ -41,7 +41,7 @@ def handle_message(event):
     if txtpesan.lower() == 'coba' :
         line_bot_api.reply_message(reply_token, TextSendMessage(text = 'Coba Berhasil'))
     elif txtpesan.lower() == 'leave' :
-        room_id = simpan['room']['Id']
+        room_id = simpan['roomId']
         line_bot_api.leave_room(room_id)
     else :
         line_bot_api.reply_message(reply_token, TextSendMessage(text = txtpesan))
