@@ -37,7 +37,7 @@ def callback():
 def handle_text_message(event):
     text = event.message.text
 
-        if msgtext.lower() == 'halo' :
+        if text == 'halo' :
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text = 'hai'))
         else :
             line_bot_api.reply_message(reply_token, TextSendMessage(text=msgtext))
