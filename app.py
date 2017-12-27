@@ -50,6 +50,9 @@ def handle_message(event):
     except Exception as e:
         print(e)
 
+    try:
+        if msgtext.lower()=='leave' :
+        line_bot_api.leave_group('<group_id>')
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
