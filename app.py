@@ -34,11 +34,9 @@ def callback():
 
 
 @handler.add(MessageEvent, message=TextMessage)
-def handle_message(event):
-    op = json.loads(str(event))
-    msgtext = op['message']['text']
-    reply_token = op['replyToken']
-    try :
+def handle_text_message(event):
+    text = event.message.text
+    
         if msgtext.lower() == 'halo' :
             line_bot_api.reply_message(reply_token, TextSendMessage(text = 'hai'))
         else :
@@ -50,9 +48,7 @@ def handle_message(event):
     except Exception as e:
         print(e)
 
-    try:
-        if msgtext.lower()=='leave' :
-        line_bot_api.leave_group('<group_id>')
+   
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
