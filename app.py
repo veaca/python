@@ -47,6 +47,10 @@ def handle_text_message(event):
         print(e.error.details)
     except Exception as e:
         print(e)
+        
+        elif text== 'leave':
+            if isinstance(event.source, SourceRoom):
+                line_bot_api.leave_room(event.source.room_id)
 
    
 
