@@ -40,7 +40,7 @@ def handle_message(event):
    reply_token = op['replyToken']
         if msgtext.lower() == 'halo' :
             line_bot_api.reply_message(reply_token, TextSendMessage(text = 'hai'))
-        elif msgtext.lower() == 'status' :
+        if msgtext.lower() == 'status' :
              line_bot_api.reply_message(reply_token, TextSendMessage(text = 'show'))
 
         else :
