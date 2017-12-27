@@ -34,9 +34,16 @@ def callback():
 
 
 @handler.add(MessageEvent, message=TextMessage)
-def handle_text_message(event):
-    text = event.message.text
-            line_bot_api.reply_message(event.reply_token, TextMessage(text=event.message.text))
+def handle_message(event):
+    simpan = json.loads(str(event))
+    txtpesan = simpan['message']['text']
+    reply_token = simpan['replyToken']
+    
+    try :
+        if txtpesan.lower() == 'coba' :
+            line_bot_api.reply_message(reply_token, TextSendMessage(text = 'Coba Berhasil'))
+        else :
+            line_bot_api.reply_message(reply_token, TextSendMessage(text = txtpesan))
     
    
 
