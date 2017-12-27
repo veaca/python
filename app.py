@@ -39,6 +39,11 @@ def handle_text_message(event):
     
         if msgtext.lower() == 'halo' :
             line_bot_api.reply_message(reply_token, TextSendMessage(text = 'hai'))
+            
+        elif text== 'leave':
+            if isinstance(event.source, SourceRoom):
+                line_bot_api.leave_room(event.source.room_id)
+
         else :
             line_bot_api.reply_message(reply_token, TextSendMessage(text=msgtext))
     except LineBotApiError as e:
@@ -47,11 +52,6 @@ def handle_text_message(event):
         print(e.error.details)
     except Exception as e:
         print(e)
-        
-        elif text== 'leave':
-            if isinstance(event.source, SourceRoom):
-                line_bot_api.leave_room(event.source.room_id)
-
    
 
 if __name__ == "__main__":
