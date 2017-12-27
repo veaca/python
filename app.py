@@ -34,9 +34,10 @@ def callback():
 
 
 @handler.add(MessageEvent, message=TextMessage)
-def handle_text_message(event):
-    text = event.message.text
-    
+def handle_message(event):
+   op = json.loads(str(event))
+   msgtext = op['message']['text']
+   reply_token = op['replyToken']
         if msgtext.lower() == 'halo' :
             line_bot_api.reply_message(reply_token, TextSendMessage(text = 'hai'))
         elif msgtext.lower() == 'status' :
