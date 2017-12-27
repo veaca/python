@@ -34,21 +34,14 @@ def callback():
 
 
 @handler.add(MessageEvent, message=TextMessage)
-def handle_message(event):
-    op = json.loads(str(event))
-    msgtext = op['message']['text']
-    reply_token = op['replyToken']
-    try :
+def handle_text_message(event):
+    text = event.message.text
+
         if msgtext.lower() == 'halo' :
-            line_bot_api.reply_message(reply_token, TextSendMessage(text = 'hai'))
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text = 'hai'))
         else :
             line_bot_api.reply_message(reply_token, TextSendMessage(text=msgtext))
-    except LineBotApiError as e:
-        print(e.status_code)
-        print(e.error.message)
-        print(e.error.details)
-    except Exception as e:
-        print(e)
+    
    
 
 if __name__ == "__main__":
