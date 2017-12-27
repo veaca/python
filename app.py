@@ -39,10 +39,8 @@ def handle_text_message(event):
     
         if msgtext.lower() == 'halo' :
             line_bot_api.reply_message(reply_token, TextSendMessage(text = 'hai'))
-            
-        elif msgtext.lower() == 'leave':
-            
-                line_bot_api.leave_room(event.source.room_id)
+        elif msgtext.lower() == 'status' :
+             line_bot_api.reply_message(reply_token, TextSendMessage(text = 'show'))
 
         else :
             line_bot_api.reply_message(reply_token, TextSendMessage(text=msgtext))
