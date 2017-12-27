@@ -39,10 +39,10 @@ def handle_message(event):
     txtpesan = simpan['message']['text']
     reply_token = simpan['replyToken']
     
-        if txtpesan.lower() == 'coba' :
-            line_bot_api.reply_message(reply_token, TextSendMessage(text = 'Coba Berhasil'))
-        else :
-            line_bot_api.reply_message(reply_token, TextSendMessage(text = txtpesan))
+    if txtpesan.lower() == 'coba' :
+        line_bot_api.reply_message(reply_token, TextSendMessage(text = 'Coba Berhasil'))
+    else :
+        line_bot_api.reply_message(reply_token, TextSendMessage(text = txtpesan))
     
    
 
