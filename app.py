@@ -41,7 +41,7 @@ def handle_text_message(event):
             line_bot_api.reply_message(event.reply_token, TextMessage(text = 'hai'))
             line_bot_api.leave_room(room_id)
         else :
-            line_bot_api.reply_message(reply_token, TextMessage(text=msgtext))
+            line_bot_api.reply_message(event.reply_token, TextMessage(text=event.message.text))
     
    
 
