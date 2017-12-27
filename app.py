@@ -39,8 +39,8 @@ def handle_message(event):
     txtpesan = simpan['message']['text']
     reply_token = simpan['replyToken']
     if txtpesan.lower() == 'show' :
-        textOp=json.dumps(op,indent=2)
-        line_bot_api.reply_message(reply_token, TextSendMessage(text=textOp))
+        textSimpan=json.dumps(simpan,indent=2)
+        line_bot_api.reply_message(reply_token, TextSendMessage(text=textSimpan))
     elif txtpesan.lower() == 'coba' :
         line_bot_api.reply_message(reply_token, TextSendMessage(text = 'Coba Berhasil'))
     elif txtpesan.lower() == 'leave' :
