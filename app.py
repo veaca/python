@@ -48,6 +48,9 @@ def handle_message(event):
         if jenis.lower() == 'room':
             room_id = simpan['source']['roomId']
             line_bot_api.leave_room(room_id)
+        elif jenis.lower() == 'group':
+            group_id = simpan['source']['groupId']
+            line_bot_api.leave_group(group_id)
     else :
         line_bot_api.reply_message(reply_token, TextSendMessage(text = txtpesan))
     
