@@ -38,6 +38,7 @@ def handle_message(event):
    op = json.loads(str(event))
    msgtext = op['message']['text']
    reply_token = op['replyToken']
+try: 
         if msgtext.lower() == 'halo' :
             line_bot_api.reply_message(reply_token, TextSendMessage(text = 'hai'))
         elif msgtext.lower() == 'status' :
