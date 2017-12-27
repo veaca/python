@@ -38,9 +38,9 @@ def handle_text_message(event):
     text = event.message.text
 
         if text == 'halo' :
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text = 'hai'))
+            line_bot_api.reply_message(event.reply_token, TextMessage(text = 'hai'))
         else :
-            line_bot_api.reply_message(reply_token, TextSendMessage(text=msgtext))
+            line_bot_api.reply_message(reply_token, TextMessage(text=msgtext))
     
    
 
