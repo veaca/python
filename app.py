@@ -1,4 +1,4 @@
-import os
+import os , json
 from flask import Flask, request, abort
 
 from linebot import (
@@ -37,9 +37,20 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=event.message.text))
+    op = json.loads(str(event))
+    msgtext = op['message']['text']
+    reply_token = op['replyToken']
+    try :
+        if msgtext.lower() == 'halo' :
+            line_bot_api.reply_message(reply_token, TextSendMessage(text = 'hai'))
+        else :
+            line_bot_api.reply_message(reply_token, TextSendMessage(text=msgtext))
+    except LineBotApiError as e:
+        print(e.status_code)
+        print(e.error.message)
+        print(e.error.details)
+    except Exception as e:
+        print(e)
 
 
 if __name__ == "__main__":
