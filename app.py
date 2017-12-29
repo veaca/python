@@ -1,4 +1,7 @@
-import os , json
+import os , json, urllib2
+
+from bs4 import BeautifulSoup
+
 from flask import Flask, request, abort
 
 from linebot import (
@@ -13,6 +16,7 @@ app = Flask(__name__)
 
 line_bot_api = LineBotApi('4ksfjWNXRxXN3fElzCnJkfBrLBr+YZExAkxDnCHPaSjy9CZBswHJyxtqJuK7OF1HAwZUYYMHo2ynCZetDOKKHrQ03chyHrMkYK2lVv44kOXo1Copj4Yrz7MtnO3o15ttq/sVxNSRSlJuO6wvKcXLswdB04t89/1O/w1cDnyilFU=')
 handler = WebhookHandler('eaea5d768a94368365a2de5966999a68')
+
 
 
 @app.route("/callback", methods=['POST'])
@@ -33,6 +37,7 @@ def callback():
     return 'OK'
 
 
+
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     simpan = json.loads(str(event))
@@ -43,6 +48,12 @@ def handle_message(event):
         line_bot_api.reply_message(reply_token, TextSendMessage(text=textSimpan))
     elif txtpesan.lower() == 'coba' :
         line_bot_api.reply_message(reply_token, TextSendMessage(text = 'Coba Berhasil'))
+	elif txtpesan.lower() == 'index' :
+		url = raw_input("https://en.wikipedia.org/wiki/Indonesia")
+		content = urllib2.urlopen(url).read()
+		soup = BeautifulSoup(content)
+		tampil = soup.get_text()
+		line_bot_api.reply_message(reply_token, TextSendMessage(text = tampil))
     elif txtpesan.lower() == 'leave' :
         jenis = simpan['source']['type']
         if jenis.lower() == 'room':
