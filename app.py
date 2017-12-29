@@ -56,8 +56,6 @@ def handle_message(event):
         elif jenis.lower() == 'group':
             group_id = simpan['source']['groupId']
             line_bot_api.leave_group(group_id)
-    elif txtpesan.lower() == 'index' :
-	line_bot_api.reply_message(reply_token, TextSendMessage(text = soup.get_text()))
     else :
         line_bot_api.reply_message(reply_token, TextSendMessage(text = txtpesan))
     
