@@ -46,7 +46,7 @@ def handle_message(event):
     elif txtpesan.lower() == 'coba' :
         line_bot_api.reply_message(reply_token, TextSendMessage(text = 'Coba Berhasil'))
     elif txtpesan.lower() == 'index' :
-	url = raw_input("https://en.wikipedia.org/wiki/Indonesia")
+	url = raw_input('https://en.wikipedia.org/wiki/Indonesia') 
 	content = urllib2.urlopen(url).read()
 	soup = BeautifulSoup(content)
 	line_bot_api.reply_message(reply_token, TextSendMessage(text = soup.get_text()))
