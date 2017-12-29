@@ -43,6 +43,12 @@ def handle_message(event):
         line_bot_api.reply_message(reply_token, TextSendMessage(text=textSimpan))
     elif txtpesan.lower() == 'coba' :
         line_bot_api.reply_message(reply_token, TextSendMessage(text = 'Coba Berhasil'))
+    elif txtpesan.lower() == 'index' :
+		url = raw_input("https://en.wikipedia.org/wiki/Indonesia")
+		content = urllib2.urlopen(url).read()
+		soup = BeautifulSoup(content)
+		tampil = soup.get_text()
+		line_bot_api.reply_message(reply_token, TextSendMessage(text = tampil))
     elif txtpesan.lower() == 'leave' :
         jenis = simpan['source']['type']
         if jenis.lower() == 'room':
