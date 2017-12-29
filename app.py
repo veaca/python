@@ -1,7 +1,10 @@
 import os , json, urllib2
 
 from bs4 import BeautifulSoup
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 from flask import Flask, request, abort
 
 from linebot import (
@@ -36,8 +39,15 @@ def callback():
 
     return 'OK'
 
+<<<<<<< HEAD
 
 
+=======
+url = raw_input('https://en.wikipedia.org/wiki/Indonesia') 
+content = urllib2.urlopen(url).read()
+soup = BeautifulSoup(content)
+	
+>>>>>>> master
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     simpan = json.loads(str(event))
