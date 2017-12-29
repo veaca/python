@@ -1,4 +1,6 @@
-import os , json
+import os , json, urllib2
+
+from bs4 import BeautifulSoup
 from flask import Flask, request, abort
 
 from linebot import (
