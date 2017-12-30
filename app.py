@@ -44,10 +44,10 @@ def handle_message(event):
     simpan = json.loads(str(event))
     txtpesan = simpan['message']['text']
     reply_token = simpan['replyToken']
-    if txtpesan.lower() == 'show' :
-        textSimpan=json.dumps(simpan,indent=2)
-        line_bot_api.reply_message(reply_token, TextSendMessage(text=textSimpan))
-    elif txtpesan.lower() == 'coba' :
+#    if txtpesan.lower() == 'show' :
+ #       textSimpan=json.dumps(simpan,indent=2)
+  #      line_bot_api.reply_message(reply_token, TextSendMessage(text=textSimpan))
+    if txtpesan.lower() == 'coba' :
         url = 'https://en.wikipedia.org/wiki/Indonesia'
         page = requests.get(url)
         page_soup = soup(page.text, 'html.parser')
