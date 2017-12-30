@@ -1,4 +1,4 @@
-import os , json, urllib2
+import os , json
 
 from bs4 import BeautifulSoup
 
