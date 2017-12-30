@@ -1,6 +1,6 @@
-import os , json, urllib2
+import os , json, requests
 
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup as soup
 
 from flask import Flask, request, abort
 
@@ -35,12 +35,9 @@ def callback():
         abort(400)
 
     return 'OK'
+        
 
 
-url = raw_input('https://en.wikipedia.org/wiki/Indonesia') 
-content = urllib2.urlopen(url).read()
-soup = BeautifulSoup(content)
-tampil = soup.get_text()
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
@@ -50,8 +47,12 @@ def handle_message(event):
     if txtpesan.lower() == 'show' :
         textSimpan=json.dumps(simpan,indent=2)
         line_bot_api.reply_message(reply_token, TextSendMessage(text=textSimpan))
-    elif txtpesan.lower() == 'coba' :
-        line_bot_api.reply_message(reply_token, TextSendMessage(text = tampil))
+    if txtpesan.lower() == 'coba' :
+        url = 'https://en.wikipedia.org/wiki/Indonesia'
+        page = requests.get(url)
+        page_soup = soup(page.content, 'html.parser')
+        tampil = str(page_soup)
+        line_bot_api.reply_message(reply_token, TextSendMessage(text = page_soup))
     elif txtpesan.lower() == 'leave' :
         jenis = simpan['source']['type']
         if jenis.lower() == 'room':
