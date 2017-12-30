@@ -1,6 +1,4 @@
-import os , json
-
-from urllib.request import urlopen as uReq
+import os , json, requests
 
 from bs4 import BeautifulSoup as soup
 
@@ -40,9 +38,7 @@ def callback():
         
 
 url = 'https://en.wikipedia.org/wiki/Indonesia'
-uClient = uReq(url)
-page_html = uClient.read()
-uClient.close()
+page_html = requests.get(url)
 page_soup = soup(page_html, "html.parser")
 tampil = str(page_soup)
 
