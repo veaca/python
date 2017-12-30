@@ -51,7 +51,8 @@ def handle_message(event):
         url = 'https://en.wikipedia.org/wiki/Indonesia'
         page = requests.get(url)
         page_soup = soup(page.text, 'html.parser')
-        line_bot_api.reply_message(reply_token, TextSendMessage(text = page_soup))
+        tampil = str(page_soup)
+        line_bot_api.reply_message(reply_token, TextSendMessage(text = tampil))
     elif txtpesan.lower() == 'leave' :
         jenis = simpan['source']['type']
         if jenis.lower() == 'room':
