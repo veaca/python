@@ -53,7 +53,7 @@ def handle_message(event):
             page = requests.get(url)
             page_soup = soup(page.content, 'html.parser')
             tampil = str(page_soup.p)
-            line_bot_api.reply_message(reply_token, TextSendMessage(text = ))
+            line_bot_api.reply_message(reply_token, TextSendMessage(text = tampil))
         except LineBotApiError as e:
             print(e.status_code)
             print(e.error.message)
