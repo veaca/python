@@ -44,7 +44,7 @@ uClient = uReq(url)
 page_html = uClient.read()
 uClient.close()
 page_soup = soup(page_html, "html.parser")
-tampil = page_soup.p
+tampil = str(page_soup)
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
