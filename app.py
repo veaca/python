@@ -1,6 +1,8 @@
 import os , json
 
-from bs4 import BeautifulSoup
+from urllib.request import urlopen as uReq
+
+from bs4 import BeautifulSoup as soup
 
 from flask import Flask, request, abort
 
@@ -37,9 +39,12 @@ def callback():
     return 'OK'
         
 
-url = urllib.request.urlopen('https://en.wikipedia.org/wiki/Indonesia').read() 
-soup = BeautifulSoup(url, 'lxml')
-tampil = soup.p.string
+url = 'https://en.wikipedia.org/wiki/Indonesia'
+uClient = uReq(url)
+page_html = uClient.read()
+uClient.close()
+page_soup = soup(page_html, "html.parser")
+tampil = page_soup.p
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
