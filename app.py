@@ -50,8 +50,8 @@ def handle_message(event):
     elif txtpesan.lower() == 'coba' :
         url = 'https://en.wikipedia.org/wiki/Indonesia'
         page = requests.get(url)
-        page_soup = soup(page, "html.parser")
-        tampil = str(page_soup.text)
+        page_soup = soup(page.text, 'html.parser')
+        tampil = str(page_soup)
         line_bot_api.reply_message(reply_token, TextSendMessage(text = tampil))
     elif txtpesan.lower() == 'leave' :
         jenis = simpan['source']['type']
