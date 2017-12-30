@@ -47,12 +47,19 @@ def handle_message(event):
     if txtpesan.lower() == 'show' :
         textSimpan=json.dumps(simpan,indent=2)
         line_bot_api.reply_message(reply_token, TextSendMessage(text=textSimpan))
-    if txtpesan.lower() == 'coba' :
-        url = 'https://en.wikipedia.org/wiki/Indonesia'
-        page = requests.get(url)
-        page_soup = soup(page.content, 'html.parser')
-        tampil = str(page_soup)
-        line_bot_api.reply_message(reply_token, TextSendMessage(text = tampil))
+    try:
+        if txtpesan.lower() == 'coba' :
+            url = 'https://en.wikipedia.org/wiki/Indonesia'
+            page = requests.get(url)
+            page_soup = soup(page.content, 'html.parser')
+            tampil = str(page_soup)
+            line_bot_api.reply_message(reply_token, TextSendMessage(text = tampil))
+    except LineBotApiError as e:
+        print(e.status_code)
+        print(e.error.message)
+        print(e.error.details)
+    except Exception as e:
+        print(e)
     elif txtpesan.lower() == 'leave' :
         jenis = simpan['source']['type']
         if jenis.lower() == 'room':
