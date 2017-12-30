@@ -45,14 +45,14 @@ def handle_message(event):
     txtpesan = simpan['message']['text']
     reply_token = simpan['replyToken']
     if txtpesan.lower() == 'show' :
-        #textSimpan=json.dumps(simpan,indent=2)
-        #line_bot_api.reply_message(reply_token, TextSendMessage(text=textSimpan))
+        textSimpan=json.dumps(simpan,indent=2)
+        line_bot_api.reply_message(reply_token, TextSendMessage(text=textSimpan))
     if txtpesan.lower() == 'coba' :
         url = 'https://en.wikipedia.org/wiki/Indonesia'
         page = requests.get(url)
-        #page_soup = soup(page.text, 'html.parser')
-        #tampil = str(page_soup)
-        line_bot_api.reply_message(reply_token, TextSendMessage(text = str(page.status_code)))
+        page_soup = soup(page.text, 'html.parser')
+        tampil = str(page_soup)
+        line_bot_api.reply_message(reply_token, TextSendMessage(text = tampil))
     elif txtpesan.lower() == 'leave' :
         jenis = simpan['source']['type']
         if jenis.lower() == 'room':
