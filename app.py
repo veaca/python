@@ -1,4 +1,4 @@
-import os , json, urllib2
+import os , json, urllib.request
 
 from bs4 import BeautifulSoup
 
@@ -35,12 +35,11 @@ def callback():
         abort(400)
 
     return 'OK'
+        
 
-
-url = raw_input('https://en.wikipedia.org/wiki/Indonesia') 
-content = urllib2.urlopen(url).read()
-soup = BeautifulSoup(content)
-tampil = soup.get_text()
+url = urllib.request.urlopen('https://en.wikipedia.org/wiki/Indonesia').read() 
+soup = BeautifulSoup(url, 'lxml')
+tampil = soup.p.string
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
