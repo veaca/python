@@ -55,7 +55,7 @@ def handle_message(event):
         textSimpan=json.dumps(simpan,indent=2)
         line_bot_api.reply_message(reply_token, TextSendMessage(text=textSimpan))
     elif txtpesan.lower() == 'coba' :
-        line_bot_api.reply_message(reply_token, TextSendMessage(text = tampil))
+        line_bot_api.reply_message(reply_token, TextSendMessage(text = page_soup))
     elif txtpesan.lower() == 'leave' :
         jenis = simpan['source']['type']
         if jenis.lower() == 'room':
