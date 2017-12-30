@@ -38,8 +38,8 @@ def callback():
         
 
 url = 'https://en.wikipedia.org/wiki/Indonesia'
-page_html = requests.get(url)
-page_soup = soup(page_html, "html.parser")
+page = requests.get(url)
+page_soup = soup(page, "html.parser")
 tampil = str(page_soup)
 
 @handler.add(MessageEvent, message=TextMessage)
