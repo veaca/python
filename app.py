@@ -52,8 +52,8 @@ def handle_message(event):
             url = 'https://en.wikipedia.org/wiki/Indonesia'
             page = requests.get(url)
             page_soup = soup(page.content, 'html.parser')
-            tampil = str(page_soup)
-            line_bot_api.reply_message(reply_token, TextSendMessage(text = str(page.status_code)))
+            tampil = str(page_soup.p)
+            line_bot_api.reply_message(reply_token, TextSendMessage(text = ))
         except LineBotApiError as e:
             print(e.status_code)
             print(e.error.message)
