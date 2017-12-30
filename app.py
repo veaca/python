@@ -45,8 +45,8 @@ def handle_message(event):
     txtpesan = simpan['message']['text']
     reply_token = simpan['replyToken']
     if txtpesan.lower() == 'show' :
-        textSimpan=json.dumps(simpan,indent=2)
-        line_bot_api.reply_message(reply_token, TextSendMessage(text=textSimpan))
+        #textSimpan=json.dumps(simpan,indent=2)
+        #line_bot_api.reply_message(reply_token, TextSendMessage(text=textSimpan))
     if txtpesan.lower() == 'coba' :
         url = 'https://en.wikipedia.org/wiki/Indonesia'
         page = requests.get(url)
