@@ -52,7 +52,7 @@ def handle_message(event):
         page = requests.get(url)
         page_soup = soup(page.content, 'html.parser')
         tampil = str(page_soup)
-        line_bot_api.reply_message(reply_token, TextSendMessage(text = page_soup))
+        line_bot_api.reply_message(reply_token, TextSendMessage(text = tampil))
     elif txtpesan.lower() == 'leave' :
         jenis = simpan['source']['type']
         if jenis.lower() == 'room':
